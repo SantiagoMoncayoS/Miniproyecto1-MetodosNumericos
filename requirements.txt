@@ -1,0 +1,4 @@
+# Dependencias principales para el Miniproyecto 1
+numpy>=1.23,<2.0
+matplotlib>=3.7,<4.0
+scipy>=1.11,<2.0
