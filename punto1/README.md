@@ -20,7 +20,7 @@ Desde la raíz del repositorio:
 
 ```bash
 python -m punto1.app.main
-
+```
 Pasos al ejecutar:
 
 1. Se abre la imagen de la chocolatera.
