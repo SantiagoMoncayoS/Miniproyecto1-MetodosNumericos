@@ -1,0 +1,40 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{listings}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Miniproyecto 1}
+\author{(Santiago Moncayo Sarria)}
+\date{}
+
+\begin{document}
+\maketitle
+\section{La razón entre las coordenadas (Jacobiano)}
+
+\subsection{Derivación geométrica}
+Sea \(\mathbf{x}(\xi,\eta)=(x(\xi,\eta),y(\xi,\eta))\).
+Los vectores tangentes son:
+\[
+\mathbf{a} = \frac{\partial\mathbf{x}}{\partial\xi}\, d\xi,
+\qquad
+\mathbf{b} = \frac{\partial\mathbf{x}}{\partial\eta}\, d\eta.
+\]
+El área del paralelogramo es \(|\mathbf{a}\times\mathbf{b}|\). Expresándolo:
+\[
+dA = |x_\xi y_\eta - x_\eta y_\xi|\, d\xi\, d\eta = |J(\xi,\eta)|\, d\xi\, d\eta.
+\]
+
+\subsection{Derivación algebraica breve}
+Aplicando la regla de la cadena para la transformación local (linealizada por \(J\)), se llega al mismo determinante como factor de escala del área diferencial.
+
+\subsection{Ejemplo: coordenadas polares}
+Con \(x=r\cos\theta\), \(y=r\sin\theta\),
+\[
+J=\begin{pmatrix}\cos\theta & -r\sin\theta\\ \sin\theta & r\cos\theta\end{pmatrix},\qquad
+\det J = r.
+\]
+Así \(dx\,dy = r\,dr\,d\theta\).
+
+\end{document}
