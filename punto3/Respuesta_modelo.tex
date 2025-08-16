@@ -11,30 +11,133 @@
 
 \begin{document}
 \maketitle
-\section{La razón entre las coordenadas (Jacobiano)}
+\section*{Punto 3. La razón entre las coordenadas}
 
-\subsection{Derivación geométrica}
-Sea \(\mathbf{x}(\xi,\eta)=(x(\xi,\eta),y(\xi,\eta))\).
-Los vectores tangentes son:
+Se quiere demostrar de manera intuitiva pero contundente que:
 \[
-\mathbf{a} = \frac{\partial\mathbf{x}}{\partial\xi}\, d\xi,
+dx\,dy = |J|\, d\xi\, d\eta,
+\]
+donde $|J|$ es el determinante del Jacobiano de la transformación.
+
+\subsection*{1. Transformación de coordenadas}
+
+Sea una transformación de variables en $\mathbb{R}^2$:
+\[
+x = x(\xi,\eta), \qquad y = y(\xi,\eta).
+\]
+
+Aquí $(\xi,\eta)$ son las variables del nuevo sistema de coordenadas, mientras que $(x,y)$ 
+son las coordenadas cartesianas originales.
+
+El Jacobiano de esta transformación es la matriz:
+\[
+J = 
+\begin{bmatrix}
+\dfrac{\partial x}{\partial \xi} & \dfrac{\partial x}{\partial \eta} \\[1.2ex]
+\dfrac{\partial y}{\partial \xi} & \dfrac{\partial y}{\partial \eta}
+\end{bmatrix},
+\]
+cuyo determinante mide la deformación local de áreas al pasar de un sistema de coordenadas a otro.
+
+\subsection*{2. Geometría del diferencial de área}
+
+Consideremos un rectángulo infinitesimal en el plano $(\xi,\eta)$ de lados $d\xi$ y $d\eta$.  
+Este rectángulo tiene área:
+\[
+dA_{\xi\eta} = d\xi\, d\eta.
+\]
+
+Al transformar al plano $(x,y)$, los vectores que representan los lados del rectángulo se convierten en:
+
+\[
+\mathbf{v}_\xi = 
+\begin{bmatrix}
+\dfrac{\partial x}{\partial \xi} \\
+\dfrac{\partial y}{\partial \xi}
+\end{bmatrix} d\xi, 
 \qquad
-\mathbf{b} = \frac{\partial\mathbf{x}}{\partial\eta}\, d\eta.
-\]
-El área del paralelogramo es \(|\mathbf{a}\times\mathbf{b}|\). Expresándolo:
-\[
-dA = |x_\xi y_\eta - x_\eta y_\xi|\, d\xi\, d\eta = |J(\xi,\eta)|\, d\xi\, d\eta.
+\mathbf{v}_\eta =
+\begin{bmatrix}
+\dfrac{\partial x}{\partial \eta} \\
+\dfrac{\partial y}{\partial \eta}
+\end{bmatrix} d\eta.
 \]
 
-\subsection{Derivación algebraica breve}
-Aplicando la regla de la cadena para la transformación local (linealizada por \(J\)), se llega al mismo determinante como factor de escala del área diferencial.
-
-\subsection{Ejemplo: coordenadas polares}
-Con \(x=r\cos\theta\), \(y=r\sin\theta\),
+Por lo tanto, el área en el plano $(x,y)$ está dada por el área del paralelogramo generado por
+$\mathbf{v}\xi$ y $\mathbf{v}\eta$:
 \[
-J=\begin{pmatrix}\cos\theta & -r\sin\theta\\ \sin\theta & r\cos\theta\end{pmatrix},\qquad
-\det J = r.
+dA_{xy} = |\mathbf{v}\xi \times \mathbf{v}\eta|.
 \]
-Así \(dx\,dy = r\,dr\,d\theta\).
+
+\subsection*{3. Cálculo mediante determinante}
+
+El producto cruz en 2D (considerando un análogo en 3D con componente $k$) es:
+\[
+\mathbf{v}\xi \times \mathbf{v}\eta 
+= \det
+\begin{bmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+\dfrac{\partial x}{\partial \xi} d\xi & \dfrac{\partial y}{\partial \xi} d\xi & 0 \\
+\dfrac{\partial x}{\partial \eta} d\eta & \dfrac{\partial y}{\partial \eta} d\eta & 0
+\end{bmatrix}.
+\]
+
+Su magnitud es:
+\[
+|\mathbf{v}\xi \times \mathbf{v}\eta|
+= \left|
+\det\begin{bmatrix}
+\dfrac{\partial x}{\partial \xi} & \dfrac{\partial x}{\partial \eta} \\
+\dfrac{\partial y}{\partial \xi} & \dfrac{\partial y}{\partial \eta}
+\end{bmatrix}
+\right| d\xi\, d\eta.
+\]
+
+Es decir:
+\[
+dA_{xy} = |J| \, d\xi\, d\eta.
+\]
+
+\subsection*{4. Comprobación con Coordenadas polares}
+
+Consideremos el cambio $(\xi,\eta) = (r,\theta)$, con:
+\[
+x = r\cos\theta, \qquad y = r\sin\theta.
+\]
+
+El Jacobiano es:
+\[
+J = 
+\begin{bmatrix}
+\dfrac{\partial x}{\partial r} & \dfrac{\partial x}{\partial \theta} \\[1.2ex]
+\dfrac{\partial y}{\partial r} & \dfrac{\partial y}{\partial \theta}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos\theta & -r\sin\theta \\
+\sin\theta & r\cos\theta
+\end{bmatrix}.
+\]
+
+Su determinante es:
+\[
+|J| = r(\cos^2\theta + \sin^2\theta) = r.
+\]
+
+Por tanto:
+\[
+dx\,dy = r\, dr\, d\theta.
+\]
+
+Este resultado es bien conocido y confirma que el Jacobiano funciona como factor de escala de áreas
+al cambiar de coordenadas cartesianas a polares.
+
+El determinante Jacobiano $|J|$ representa el factor de escala de área entre los sistemas de coordenadas.  
+Cada diferencial de área en $(\xi,\eta)$, al transformarse al plano $(x,y)$, se multiplica por $|J|$.  
+
+De esta manera se concluye de forma contundente:
+\[
+\boxed{dx\,dy = |J| \, d\xi\, d\eta.}
+\]
 
 \end{document}
