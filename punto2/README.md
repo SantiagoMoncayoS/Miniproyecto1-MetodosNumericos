@@ -1,9 +1,3 @@
-
----
-
-# 📄 `punto2/README.md`
-
-```markdown
 # Punto 2 – Estabilidad y orden
 
 Este punto estudia el problema de **decaimiento exponencial** y compara tres métodos numéricos: Forward Euler, Backward Euler y Crank–Nicolson.
